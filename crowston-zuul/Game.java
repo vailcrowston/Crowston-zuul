@@ -84,7 +84,7 @@ public class Game
         // Print the current room's description
         System.out.println("You are " + currentRoom.getDescription());
         
-        // Print available exits
+        // Use the Room class method to print the exits
         System.out.println(currentRoom.getExitString());
     }
 

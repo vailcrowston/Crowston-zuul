@@ -44,11 +44,12 @@ public class Room
      */
     public String getExitString()
     {
+        // StringBuilder is more efficient for concatenating strings in a loop
         StringBuilder exitString = new StringBuilder("Exits: ");
         for (String direction : exits.keySet()) {
             exitString.append(direction).append(" ");
         }
-        return exitString.toString();
+        return exitString.toString().trim();  // Trim to remove trailing space
     }
 
     /**
