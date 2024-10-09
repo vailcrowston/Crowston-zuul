@@ -13,12 +13,12 @@ public class Room
     public Room(String description) 
     {
         this.description = description;
-        exits = new HashMap<String, Room>();  // Initialize the exits map
+        exits = new HashMap<>();  // Initialize the exits map
     }
 
     /**
-     * Define an exit for this room.
-     * @param direction The direction of the exit.
+     * Define an exit from this room.
+     * @param direction The direction of the exit (e.g., "north", "south", "up", "down").
      * @param neighbor The room to which the exit leads.
      */
     public void setExit(String direction, Room neighbor) 

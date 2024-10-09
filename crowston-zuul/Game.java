@@ -27,7 +27,7 @@ public class Game
         coffeeShop = new Room("in a cozy coffee shop.");
         fashionRunway = new Room("on a fashion runway, lights flashing and music playing.");
 
-        // initialize room exits using the HashMap
+        // initialize room exits using the setExit method
         makeupStudio.setExit("north", spa);
         makeupStudio.setExit("east", boutique);
         
