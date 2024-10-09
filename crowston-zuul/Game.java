@@ -4,7 +4,7 @@ public class Game
     private Room currentRoom;
         
     /**
-     * Create the game and initialise its internal map.
+     * Create the game and initialize its internal map.
      */
     public Game() 
     {
@@ -27,13 +27,21 @@ public class Game
         coffeeShop = new Room("in a cozy coffee shop.");
         fashionRunway = new Room("on a fashion runway, lights flashing and music playing.");
 
-        // initialize room exits
-        makeupStudio.setExits(spa, boutique, null, null);
-        boutique.setExits(null, null, makeupStudio, null);
-        flowerGarden.setExits(null, spa, null, coffeeShop);
-        spa.setExits(flowerGarden, makeupStudio, null, null);
-        coffeeShop.setExits(null, flowerGarden, null, null);
-        fashionRunway.setExits(null, null, null, coffeeShop);
+        // initialize room exits using the HashMap
+        makeupStudio.setExit("north", spa);
+        makeupStudio.setExit("east", boutique);
+        
+        boutique.setExit("west", makeupStudio);
+        
+        flowerGarden.setExit("east", spa);
+        flowerGarden.setExit("west", coffeeShop);
+        
+        spa.setExit("south", makeupStudio);
+        spa.setExit("north", flowerGarden);
+        
+        coffeeShop.setExit("east", flowerGarden);
+        
+        fashionRunway.setExit("south", coffeeShop);
 
         currentRoom = makeupStudio;  // start game in the makeup studio
     }
@@ -64,7 +72,7 @@ public class Game
         System.out.println("Type 'help' if you need assistance.");
         System.out.println();
         
-        // Use printLocationInfo to show the starting location
+        // Print the starting location info
         printLocationInfo();
     }
 
@@ -77,20 +85,7 @@ public class Game
         System.out.println("You are " + currentRoom.getDescription());
         
         // Print available exits
-        System.out.print("Exits: ");
-        if (currentRoom.getExit("north") != null) {
-            System.out.print("north ");
-        }
-        if (currentRoom.getExit("east") != null) {
-            System.out.print("east ");
-        }
-        if (currentRoom.getExit("south") != null) {
-            System.out.print("south ");
-        }
-        if (currentRoom.getExit("west") != null) {
-            System.out.print("west ");
-        }
-        System.out.println();  // move to the next line after printing exits
+        System.out.println(currentRoom.getExitString());
     }
 
     /**
@@ -154,7 +149,6 @@ public class Game
             System.out.println("Oops! No way to go that way!");
         } else {
             currentRoom = nextRoom;
-            // Use printLocationInfo to show the new location after moving
             printLocationInfo();
         }
     }
