@@ -81,11 +81,8 @@ public class Game
      */
     private void printLocationInfo() 
     {
-        // Print the current room's description
-        System.out.println("You are " + currentRoom.getDescription());
-        
-        // Use the Room class method to print the exits
-        System.out.println(currentRoom.getExitString());
+        // Use the new getLongDescription method from the Room class
+        System.out.println(currentRoom.getLongDescription());
     }
 
     /**

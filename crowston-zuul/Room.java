@@ -6,8 +6,7 @@ public class Room
     private HashMap<String, Room> exits;  // stores exits for directions
     
     /**
-     * Create a room described by "description". Initially, it has
-     * no exits.
+     * Create a room described by "description". Initially, it has no exits.
      * @param description The room's description.
      */
     public Room(String description) 
@@ -38,18 +37,26 @@ public class Room
     }
 
     /**
-     * Return a description of the room's exits, for example,
-     * "Exits: north west".
+     * Return a description of the room's exits, for example, "Exits: north west".
      * @return A description of the available exits.
      */
     public String getExitString()
     {
-        // StringBuilder is more efficient for concatenating strings in a loop
         StringBuilder exitString = new StringBuilder("Exits: ");
         for (String direction : exits.keySet()) {
             exitString.append(direction).append(" ");
         }
         return exitString.toString().trim();  // Trim to remove trailing space
+    }
+
+    /**
+     * Return a long description of this room, of the form:
+     * "You are in the [room description]. Exits: [list of exits]".
+     * @return A long description of the room, including exits.
+     */
+    public String getLongDescription()
+    {
+        return "You are " + description + ".\n" + getExitString();
     }
 
     /**
