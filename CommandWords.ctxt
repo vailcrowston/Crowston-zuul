@@ -1,10 +1,10 @@
 #BlueJ class context
 comment0.target=CommandWords
 comment0.text=\r\n\ \ An\ updated\ variation\ of\ World\ of\ Zuul\ called,\ Girly\ World.\ \r\n\ \ Here\ in\ Girly\ World,\ we\ have\ six\ rooms\:\ \r\n\ \ a\ makeup\ studio,\ a\ boutique,\ a\ flower\ garden,\ a\ spa,\ a\ coffee\ shop,\ and\ a\ fashion\ runway.\r\n\ \r\n\ \ To\ play\ this\ game,\ create\ an\ instance\ of\ this\ class\ and\ call\ the\ "play"\r\n\ \ method.\r\n\ \r\n\ @author\ \ Vail\ Crowston\r\n
-comment1.params=aString
-comment1.target=boolean\ isCommand(java.lang.String)
-comment1.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ command\ word.\ \r\n\ @return\ true\ if\ a\ given\ string\ is\ a\ valid\ command,\ false\ otherwise.\r\n
-comment2.params=
-comment2.target=void\ showAll()
-comment2.text=\r\n\ Print\ all\ valid\ commands\ to\ the\ console.\r\n
+comment1.params=
+comment1.target=java.lang.String\ getCommandList()
+comment1.text=\r\n\ Return\ a\ string\ containing\ all\ valid\ commands.\r\n\ @return\ A\ string\ containing\ all\ the\ valid\ commands.\r\n
+comment2.params=aString
+comment2.target=boolean\ isCommand(java.lang.String)
+comment2.text=\r\n\ Check\ whether\ a\ given\ String\ is\ a\ valid\ command\ word.\r\n\ @return\ true\ if\ a\ given\ string\ is\ a\ valid\ command,\ false\ otherwise.\r\n
 numComments=3

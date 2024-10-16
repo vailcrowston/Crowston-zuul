@@ -11,32 +11,34 @@
 
 public class CommandWords
 {
-    // A constant array that holds all valid command words
-    private static final String validCommands[] = {
-        "go", "quit", "help", "look", "nap"  // Added "look" and "nap" to the valid commands
+    private static final String[] validCommands = {
+        "go", "quit", "help", "look", "nap"  // Existing commands
     };
 
     /**
-     * Check whether a given String is a valid command word. 
+     * Return a string containing all valid commands.
+     * @return A string containing all the valid commands.
+     */
+    public String getCommandList()
+    {
+        StringBuilder commandsList = new StringBuilder();
+        for (String command : validCommands) {
+            commandsList.append(command).append(" ");
+        }
+        return commandsList.toString().trim();  // Return the list of commands as a single string
+    }
+
+    /**
+     * Check whether a given String is a valid command word.
      * @return true if a given string is a valid command, false otherwise.
      */
     public boolean isCommand(String aString)
     {
-        for(int i = 0; i < validCommands.length; i++) {
-            if(validCommands[i].equals(aString))
+        for (String command : validCommands) {
+            if (command.equals(aString)) {
                 return true;
+            }
         }
         return false;
-    }
-
-    /**
-     * Print all valid commands to the console.
-     */
-    public void showAll()
-    {
-        for(String command : validCommands) {
-            System.out.print(command + " ");
-        }
-        System.out.println();
     }
 }
