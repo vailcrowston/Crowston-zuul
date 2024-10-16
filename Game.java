@@ -13,24 +13,24 @@ public class Game
 {
     private Parser parser;
     private Room currentRoom;
-        
+
     /**
      * Create the game and initialize its internal map.
      */
     public Game() 
     {
         createRooms();
-        parser = new Parser();
+        parser = new Parser();  // Assuming Parser is properly defined elsewhere
     }
 
     /**
-     * Create all the rooms and link their exits together.
+     * Create all the rooms and link their exits together. Also, add items to some rooms.
      */
     private void createRooms()
     {
         Room makeupStudio, boutique, flowerGarden, spa, coffeeShop, fashionRunway;
-      
-        // create the rooms
+
+        // Create the rooms
         makeupStudio = new Room("in a glamorous makeup studio.");
         boutique = new Room("in a stylish boutique filled with the latest trends.");
         flowerGarden = new Room("in a flower garden, bursting with colorful plants.");
@@ -38,7 +38,17 @@ public class Game
         coffeeShop = new Room("in a cozy coffee shop.");
         fashionRunway = new Room("on a fashion runway, lights flashing and music playing.");
 
-        // initialize room exits using the setExit method
+        // Create items
+        Item lipstick = new Item("a shiny lipstick", 0.2);
+        Item dress = new Item("a designer dress", 1.5);
+        Item coffee = new Item("a cup of espresso", 0.3);
+
+        // Assign items to rooms
+        makeupStudio.setItem(lipstick);
+        boutique.setItem(dress);
+        coffeeShop.setItem(coffee);
+
+        // Initialize room exits
         makeupStudio.setExit("north", spa);
         makeupStudio.setExit("east", boutique);
         
@@ -83,7 +93,6 @@ public class Game
         System.out.println("Type 'help' if you need assistance.");
         System.out.println();
         
-        // Print the starting location info
         printLocationInfo();
     }
 
@@ -92,66 +101,72 @@ public class Game
      */
     private void printLocationInfo() 
     {
-        // Use the new getLongDescription method from the Room class
         System.out.println(currentRoom.getLongDescription());
     }
 
     /**
-     * Given a command, process (that is: execute) the command.
-     * @param command The command to be processed.
-     * @return true If the command ends the game, false otherwise.
+     * Process a command from the player and act accordingly.
+     * @param command The command to process.
+     * @return true if the command ends the game, false otherwise.
      */
-     private boolean processCommand(Command command) 
+    private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
 
         String commandWord = command.getCommandWord();
 
-        if (commandWord.equals("help")) {
-            printHelp();
+        switch (commandWord) {
+            case "help":
+                printHelp();
+                break;
+            case "go":
+                goRoom(command);
+                break;
+            case "look":
+                look();
+                break;
+            case "nap":
+                nap();
+                break;
+            case "quit":
+                wantToQuit = quit(command);
+                break;
+            default:
+                System.out.println("I don't know what you mean, girly...");
+                break;
         }
-        else if (commandWord.equals("go")) {
-            goRoom(command);
-        }
-        else if (commandWord.equals("look")) {
-            look();  // Handle the look command
-        }
-        else if (commandWord.equals("quit")) {
-            wantToQuit = quit(command);
-        }
-        else {
-            System.out.println("I don't know what you mean, girly...");
-        }
-
         return wantToQuit;
     }
 
-
-    // User command implementations:
-
     /**
      * Print out some help information.
-     * Here we print a friendly message and a list of the 
-     * command words.
      */
     private void printHelp() 
     {
         System.out.println("You're fabulous! Don't worry, I got you covered.");
-        System.out.println();
         System.out.println("Your command words are:");
-        System.out.println("   go quit help");
-        System.out.println(parser.getCommandsList());  // Get the command list from Parser and print it
+        parser.getCommandsList();
     }
 
-    
-     private void look() 
+    /**
+     * Handle the "look" command.
+     */
+    private void look() 
     {
         System.out.println(currentRoom.getLongDescription());
     }
-    
+
     /**
-     * Try to go in one direction. If there is an exit, enter the new room,
-     * otherwise print an error message.
+     * Handle the "nap" command.
+     */
+    private void nap() 
+    {
+        System.out.println("You have napped now and you have endorphins!");
+    }
+
+    /**
+     * Try to go in one direction. If there is an exit, enter the new room.
+     * Otherwise, print an error message.
      */
     private void goRoom(Command command) 
     {
@@ -172,18 +187,16 @@ public class Game
     }
 
     /**
-     * "Quit" was entered. Check the rest of the command to see
-     * whether we really quit the game.
-     * @return true, if this command quits the game, false otherwise.
+     * Handle the "quit" command. Return true if the game should end, false otherwise.
      */
     private boolean quit(Command command) 
     {
-        if(command.hasSecondWord()) {
+        if (command.hasSecondWord()) {
             System.out.println("Quit what, Girly?");
             return false;
-        }
-        else {
+        } else {
             return true;  // signal that we want to quit
         }
     }
 }
+

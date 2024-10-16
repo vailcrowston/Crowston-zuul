@@ -12,19 +12,24 @@ import java.util.HashMap;
  */
 
 
+
+import java.util.HashMap;
+
 public class Room 
 {
     private String description;
     private HashMap<String, Room> exits;  // stores exits for directions
+    private Item item;  // Each room can hold one item
     
     /**
-     * Create a room described by "description". Initially, it has no exits.
+     * Create a room described by "description". Initially, it has no exits and no item.
      * @param description The room's description.
      */
     public Room(String description) 
     {
         this.description = description;
-        exits = new HashMap<>();  // Initialize the exits map
+        this.exits = new HashMap<>();  // Initialize the exits map
+        this.item = null;  // No item in the room initially
     }
 
     /**
@@ -35,6 +40,15 @@ public class Room
     public void setExit(String direction, Room neighbor) 
     {
         exits.put(direction, neighbor);  // Add the exit to the HashMap
+    }
+
+    /**
+     * Set an item for this room.
+     * @param item The item to be placed in this room.
+     */
+    public void setItem(Item item)
+    {
+        this.item = item;
     }
 
     /**
@@ -62,13 +76,16 @@ public class Room
     }
 
     /**
-     * Return a long description of this room, of the form:
-     * "You are in the [room description]. Exits: [list of exits]".
-     * @return A long description of the room, including exits.
+     * Return a long description of this room, including exits and the item (if any).
+     * @return A long description of the room.
      */
     public String getLongDescription()
     {
-        return "You are " + description + ".\n" + getExitString();
+        String roomDescription = "You are " + description + ".\n" + getExitString();
+        if (item != null) {
+            roomDescription += "\nItem: " + item.getLongDescription();
+        }
+        return roomDescription;
     }
 
     /**

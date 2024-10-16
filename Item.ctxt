@@ -1,0 +1,16 @@
+#BlueJ class context
+comment0.target=Item
+comment0.text=\r\n\ \ An\ updated\ variation\ of\ World\ of\ Zuul\ called,\ Girly\ World.\ \r\n\ \ Here\ in\ Girly\ World,\ we\ have\ six\ rooms\:\ \r\n\ \ a\ makeup\ studio,\ a\ boutique,\ a\ flower\ garden,\ a\ spa,\ a\ coffee\ shop,\ and\ a\ fashion\ runway.\r\n\ \r\n\ \ To\ play\ this\ game,\ create\ an\ instance\ of\ this\ class\ and\ call\ the\ "play"\r\n\ \ method.\r\n\ \r\n\ @author\ \ Vail\ Crowston\r\n
+comment1.params=description\ weight
+comment1.target=Item(java.lang.String,\ double)
+comment1.text=\r\n\ Constructor\ to\ create\ an\ item\ with\ a\ description\ and\ weight.\r\n\ @param\ description\ The\ item's\ description.\r\n\ @param\ weight\ The\ item's\ weight.\r\n
+comment2.params=
+comment2.target=java.lang.String\ getDescription()
+comment2.text=\r\n\ Return\ the\ item's\ description.\r\n
+comment3.params=
+comment3.target=double\ getWeight()
+comment3.text=\r\n\ Return\ the\ item's\ weight.\r\n
+comment4.params=
+comment4.target=java.lang.String\ getLongDescription()
+comment4.text=\r\n\ Return\ a\ long\ description\ of\ the\ item.\r\n
+numComments=5
