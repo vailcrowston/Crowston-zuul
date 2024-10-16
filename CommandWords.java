@@ -1,33 +1,24 @@
 /**
- * This class is part of the "World of Zuul" application. 
- * "World of Zuul" is a very simple, text based adventure game.  
+ *  An updated variation of World of Zuul called, Girly World. 
+ *  Here in Girly World, we have six rooms: 
+ *  a makeup studio, a boutique, a flower garden, a spa, a coffee shop, and a fashion runway.
  * 
- * This class holds an enumeration of all command words known to the game.
- * It is used to recognise commands as they are typed in.
- *
- * @author  Michael Kölling and David J. Barnes
- * @version 2016.02.29
+ *  To play this game, create an instance of this class and call the "play"
+ *  method.
+ * 
+ * @author  Vail Crowston
  */
 
 public class CommandWords
 {
-    // a constant array that holds all valid command words
-    private static final String[] validCommands = {
-        "go", "quit", "help"
+    // A constant array that holds all valid command words
+    private static final String validCommands[] = {
+        "go", "quit", "help", "look", "nap"  // Added "look" and "nap" to the valid commands
     };
 
     /**
-     * Constructor - initialise the command words.
-     */
-    public CommandWords()
-    {
-        // nothing to do at the moment...
-    }
-
-    /**
      * Check whether a given String is a valid command word. 
-     * @return true if a given string is a valid command,
-     * false if it isn't.
+     * @return true if a given string is a valid command, false otherwise.
      */
     public boolean isCommand(String aString)
     {
@@ -35,7 +26,17 @@ public class CommandWords
             if(validCommands[i].equals(aString))
                 return true;
         }
-        // if we get here, the string was not found in the commands
         return false;
+    }
+
+    /**
+     * Print all valid commands to the console.
+     */
+    public void showAll()
+    {
+        for(String command : validCommands) {
+            System.out.print(command + " ");
+        }
+        System.out.println();
     }
 }

@@ -1,5 +1,6 @@
 #BlueJ class context
 comment0.target=Room
+comment0.text=\r\n\ \ An\ updated\ variation\ of\ World\ of\ Zuul\ called,\ Girly\ World.\ \r\n\ \ Here\ in\ Girly\ World,\ we\ have\ six\ rooms\:\ \r\n\ \ a\ makeup\ studio,\ a\ boutique,\ a\ flower\ garden,\ a\ spa,\ a\ coffee\ shop,\ and\ a\ fashion\ runway.\r\n\ \r\n\ \ To\ play\ this\ game,\ create\ an\ instance\ of\ this\ class\ and\ call\ the\ "play"\r\n\ \ method.\r\n\ \r\n\ @author\ \ Vail\ Crowston\r\n
 comment1.params=description
 comment1.target=Room(java.lang.String)
 comment1.text=\r\n\ Create\ a\ room\ described\ by\ "description".\ Initially,\ it\ has\ no\ exits.\r\n\ @param\ description\ The\ room's\ description.\r\n

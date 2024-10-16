@@ -1,3 +1,14 @@
+/**
+ *  An updated variation of World of Zuul called, Girly World. 
+ *  Here in Girly World, we have six rooms: 
+ *  a makeup studio, a boutique, a flower garden, a spa, a coffee shop, and a fashion runway.
+ * 
+ *  To play this game, create an instance of this class and call the "play"
+ *  method.
+ * 
+ * @author  Vail Crowston
+ */
+
 public class Game 
 {
     private Parser parser;
@@ -90,28 +101,31 @@ public class Game
      * @param command The command to be processed.
      * @return true If the command ends the game, false otherwise.
      */
-    private boolean processCommand(Command command) 
+     private boolean processCommand(Command command) 
     {
         boolean wantToQuit = false;
 
-        if(command.isUnknown()) {
-            System.out.println("I don't know what you mean, girly...");
-            return false;
-        }
-
         String commandWord = command.getCommandWord();
+
         if (commandWord.equals("help")) {
             printHelp();
         }
         else if (commandWord.equals("go")) {
             goRoom(command);
         }
+        else if (commandWord.equals("look")) {
+            look();  // Handle the look command
+        }
         else if (commandWord.equals("quit")) {
             wantToQuit = quit(command);
+        }
+        else {
+            System.out.println("I don't know what you mean, girly...");
         }
 
         return wantToQuit;
     }
+
 
     // User command implementations:
 
@@ -128,6 +142,12 @@ public class Game
         System.out.println("   go quit help");
     }
 
+    
+     private void look() 
+    {
+        System.out.println(currentRoom.getLongDescription());
+    }
+    
     /**
      * Try to go in one direction. If there is an exit, enter the new room,
      * otherwise print an error message.

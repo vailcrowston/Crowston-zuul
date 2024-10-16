@@ -1,5 +1,17 @@
 import java.util.HashMap;
 
+/**
+ *  An updated variation of World of Zuul called, Girly World. 
+ *  Here in Girly World, we have six rooms: 
+ *  a makeup studio, a boutique, a flower garden, a spa, a coffee shop, and a fashion runway.
+ * 
+ *  To play this game, create an instance of this class and call the "play"
+ *  method.
+ * 
+ * @author  Vail Crowston
+ */
+
+
 public class Room 
 {
     private String description;
@@ -68,3 +80,4 @@ public class Room
         return description;
     }
 }
+
